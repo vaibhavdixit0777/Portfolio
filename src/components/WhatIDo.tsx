@@ -90,8 +90,7 @@ const WhatIDo = () => {
               <h3>DEVELOP</h3>
               <h4>Description</h4>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                quia aliquid laboriosam ducimus sit molestiae.
+                I build dynamic and interactive web applications using JavaScript, React.js, C++, and Python. My focus is on writing clean, optimized code, solving complex technical problems with DSA, and integrating robust backend APIs.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">
@@ -131,8 +130,7 @@ const WhatIDo = () => {
               <h3>DESIGN</h3>
               <h4>Description</h4>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                quia aliquid laboriosam ducimus sit molestiae
+                I create responsive, user-focused web interfaces using HTML and CSS. I specialize in crafting intuitive UI development experiences that ensure seamless and accessible interactions across all mobile and desktop devices.
               </p>
               <h5>Skillset & tools</h5>
               <div className="what-content-flex">

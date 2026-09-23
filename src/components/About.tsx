@@ -6,9 +6,7 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-          dolores numquam iusto Ratione earum ducimus autem id iure pariatur
-          dolorum quae maiores.
+          Computer Science undergraduate with a strong foundation in frontend development and software engineering. Skilled in JavaScript, React.js, HTML, CSS, C++, Python, API integration, responsive UI development, DSA, and problem solving. Seeking software engineering or frontend development internships to build impactful solutions and contribute to real-world products.
         </p>
       </div>
     </div>

@@ -16,17 +16,15 @@ const setCharacter = (
   const loadCharacter = () => {
     return new Promise<GLTF | null>(async (resolve, reject) => {
       try {
-        const encryptedBlob = await decryptFile(
+        const encryptedModel = await decryptFile(
           "/models/character.enc",
           "Character3D#@"
         );
-        const blobUrl = URL.createObjectURL(new Blob([encryptedBlob]));
-
-        let character: THREE.Object3D;
-        loader.load(
-          blobUrl,
+        loader.parse(
+          encryptedModel,
+          "/models/",
           async (gltf) => {
-            character = gltf.scene;
+            const character = gltf.scene;
             await renderer.compileAsync(character, camera, scene);
             character.traverse((child: any) => {
               if (child.isMesh) {
@@ -34,6 +32,27 @@ const setCharacter = (
                 child.castShadow = true;
                 child.receiveShadow = true;
                 mesh.frustumCulled = true;
+                
+                if (mesh.material) {
+                  const mat = mesh.material as THREE.MeshStandardMaterial;
+                  const matName = mat.name ? mat.name.toLowerCase() : "";
+                  const meshName = mesh.name ? mesh.name.toLowerCase() : "";
+                  
+                  // If it's a skin/body part, set the skin color
+                  if (matName.includes("skin") || matName.includes("body") || matName.includes("head") || matName.includes("face") || 
+                      meshName.includes("skin") || meshName.includes("body") || meshName.includes("head") || meshName.includes("face")) {
+                      
+                      // Clone material so we don't accidentally color shared materials incorrectly
+                      mesh.material = mat.clone();
+                      (mesh.material as THREE.MeshStandardMaterial).color.setHex(0xffccb4); // Natural warm skin tone
+                  }
+                  
+                  // You can also add clothing color here if needed
+                  if (matName.includes("shirt") || matName.includes("cloth") || meshName.includes("shirt") || meshName.includes("cloth")) {
+                      mesh.material = mat.clone();
+                      (mesh.material as THREE.MeshStandardMaterial).color.setHex(0x222222); // Dark Cyberpunk shirt
+                  }
+                }
               }
             });
             resolve(gltf);
@@ -43,7 +62,6 @@ const setCharacter = (
             character!.getObjectByName("footL")!.position.y = 3.36;
             dracoLoader.dispose();
           },
-          undefined,
           (error) => {
             console.error("Error loading GLTF model:", error);
             reject(error);

@@ -18,8 +18,8 @@
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-  --accentColor: #c2a4ff;
-  --backgroundColor: #0b080c;
+  --accentColor: #08f7fe;
+  --backgroundColor: #09090b;
   --vh: 100vh;
   --vh: 100svh;
 }
@@ -111,6 +111,22 @@ body {
   text-transform: uppercase;
 }
 
+.tech-label {
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: "Geist", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  pointer-events: none;
+  white-space: nowrap;
+  border: 1px solid var(--accentColor);
+  box-shadow: 0 0 10px var(--accentColor);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 @media screen and (min-width: 768px) {
   body {
     --cWidth: 94%;
@@ -120,4 +136,29 @@ body {
   .techstack h2 {
     font-size: 40px;
   }
+}
+
+.cyberpunk-logo {
+  font-family: 'Orbitron', 'Geist', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 4px;
+  text-shadow: 
+    0 0 2px #fff,
+    0 0 10px #08f7fe,
+    0 0 20px #08f7fe;
+  transition: all 0.3s ease;
+  position: relative;
+  text-decoration: none;
+  z-index: 100;
+  display: inline-block;
+}
+
+.cyberpunk-logo:hover {
+  text-shadow: 
+    2px 2px 0px #ff00ff, 
+    -2px -2px 0px #08f7fe,
+    0 0 20px #ff00ff;
+  transform: scale(1.05);
 }

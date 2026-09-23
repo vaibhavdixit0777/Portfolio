@@ -73,6 +73,9 @@ const Scene = () => {
             handleResize(renderer, camera, canvasDiv, character)
           );
         }
+      }).catch((error) => {
+        console.error("Unable to initialize the character scene:", error);
+        progress.clear();
       });
 
       let mouse = { x: 0, y: 0 },

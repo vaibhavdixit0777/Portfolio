@@ -13,21 +13,26 @@ import {
 
 const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
+  "/images/HTML5.webp",
+  "/images/css3.webp",
+  "/images/javascript.webp",
+  "/images/typescript.webp",
   "/images/react2.webp",
   "/images/next2.webp",
+  "/images/tailwind.webp",
+  "/images/git.webp",
+  "/images/github.webp",
+  "/images/restapi.webp",
   "/images/node2.webp",
-  "/images/express.webp",
-  "/images/mongo.webp",
-  "/images/mysql.webp",
-  "/images/typescript.webp",
-  "/images/javascript.webp",
+  "/images/vercel.webp",
 ];
 const textures = imageUrls.map((url) => textureLoader.load(url));
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
-const spheres = [...Array(30)].map(() => ({
+const spheres = [...Array(12)].map((_, i) => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
+  textureIndex: i
 }));
 
 type SphereProps = {
@@ -176,6 +181,7 @@ const TechStack = () => {
         camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
         onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
         className="tech-canvas"
+        style={{ touchAction: 'pan-y' }}
       >
         <ambientLight intensity={1} />
         <spotLight
@@ -193,7 +199,7 @@ const TechStack = () => {
             <SphereGeo
               key={i}
               {...props}
-              material={materials[Math.floor(Math.random() * materials.length)]}
+              material={materials[props.textureIndex]}
               isActive={isActive}
             />
           ))}
